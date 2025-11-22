@@ -19,7 +19,12 @@ struct DownloadView: View {
                     .font(.title3)
                     .bold()
             } else {
-                VerticalListView(titles: savedTitles, canDelete: true)
+                VStack {
+                    Text("Do
+                         wnloads")
+                    VerticalListView(titles: savedTitles, canDelete: true)
+                }
+                
             }
         }
     }

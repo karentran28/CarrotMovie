@@ -47,7 +47,7 @@ struct HomeView: View {
                                     // append Title object to path
                                     titleDetailPath.append(viewModel.heroTitle)
                                 } label: {
-                                    Text(Constants.playString)
+                                    Text(Constants.viewString)
                                         .ghostButton()
                                 }
                                 
