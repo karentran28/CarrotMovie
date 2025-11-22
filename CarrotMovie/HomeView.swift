@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     let viewModel = ViewModel()
     @State private var titleDetailPath = NavigationPath()
+    @Environment(\.modelContext) var modelContext
     
     var body: some View {
         NavigationStack(path: $titleDetailPath) {
@@ -51,6 +52,8 @@ struct HomeView: View {
                                 }
                                 
                                 Button {
+                                    modelContext.insert(viewModel.heroTitle)
+                                    try? modelContext.save()
                                     
                                 } label: {
                                     Text(Constants.downloadString)
@@ -71,8 +74,10 @@ struct HomeView: View {
                                 titleDetailPath.append(title)
                             }
                         }
-                    case .failed(let underlyingError):
-                        Text("Error: \(underlyingError.localizedDescription)")
+                    case .failed(let error):
+                        Text(error.localizedDescription)
+                            .errorMessage()
+                            .frame(width: geo.size.width, height: geo.size.height)
                     }
                 }
                 .task {

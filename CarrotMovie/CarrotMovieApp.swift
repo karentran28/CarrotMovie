@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct CarrotMovieApp: App {
@@ -13,5 +14,6 @@ struct CarrotMovieApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: Title.self)
     }
 }

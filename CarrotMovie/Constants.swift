@@ -14,7 +14,7 @@ struct Constants {
     static let homeString = "Home"
     static let upcomingString = "Upcoming"
     static let searchString = "Search"
-    static let downloadString = "Downloads"
+    static let downloadString = "Download"
     static let playString = "Play"
     static let trendingMoviesString = "Trending Movies"
     static let trendingTVString = "Trending TV"
@@ -69,3 +69,14 @@ extension Text {
             }
     }
 }
+
+extension Text {
+    func errorMessage() -> some View {
+        self
+            .foregroundStyle(.red)
+            .padding()
+            .background(.ultraThinMaterial)
+            .clipShape(.rect(cornerRadius: 10))
+    }
+}
+
