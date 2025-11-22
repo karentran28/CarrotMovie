@@ -20,8 +20,7 @@ struct DownloadView: View {
                     .bold()
             } else {
                 VStack {
-                    Text("Do
-                         wnloads")
+                    Text("Downloads")
                     VerticalListView(titles: savedTitles, canDelete: true)
                 }
                 
