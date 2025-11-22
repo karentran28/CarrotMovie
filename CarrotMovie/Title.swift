@@ -16,7 +16,7 @@ struct APIObject: Decodable {
 // conforms to decodable and identifiable protocols
 // decodable allows title to be created from an external data source
 // identifiable requires title to have a unique ID property that uniquely identifies each instance
-struct Title: Decodable, Identifiable {
+struct Title: Decodable, Identifiable, Hashable {
     var id: Int?
     var title: String?
     var name: String?

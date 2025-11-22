@@ -23,26 +23,34 @@ class ViewModel {
     var trendingTV: [Title] = []
     var topRatedMovies: [Title] = []
     var topRatedTV: [Title] = []
+    var heroTitle = Title.previewTitles[0]
     
     func getTitles() async {
         homeStatus = .fetching
-        
-        do {
-            // calls run in parallel
-            async let tMovies = dataFetcher.fetchTitles(for: "movie", by: "trending")
-            async let tTV = dataFetcher.fetchTitles(for: "tv", by: "trending")
-            async let tRMovies = dataFetcher.fetchTitles(for: "movie", by: "top_rated")
-            async let tRTV = dataFetcher.fetchTitles(for: "tv", by: "top_rated")
-            
-            // waits are here
-            trendingMovies = try await tMovies
-            trendingTV = try await tTV
-            topRatedMovies = try await tRMovies
-            topRatedTV = try await tRTV
+        if trendingMovies.isEmpty {
+            do {
+                // calls run in parallel
+                async let tMovies = dataFetcher.fetchTitles(for: "movie", by: "trending")
+                async let tTV = dataFetcher.fetchTitles(for: "tv", by: "trending")
+                async let tRMovies = dataFetcher.fetchTitles(for: "movie", by: "top_rated")
+                async let tRTV = dataFetcher.fetchTitles(for: "tv", by: "top_rated")
+                
+                // waits are here
+                trendingMovies = try await tMovies
+                trendingTV = try await tTV
+                topRatedMovies = try await tRMovies
+                topRatedTV = try await tRTV
+                
+                if let title = trendingMovies.randomElement() {
+                    heroTitle = title
+                }
+                homeStatus = .success
+            } catch {
+                print(error)
+                homeStatus = .failed(underlyingError: error)
+            }
+        } else {
             homeStatus = .success
-        } catch {
-            print(error)
-            homeStatus = .failed(underlyingError: error)
         }
     }
 }
