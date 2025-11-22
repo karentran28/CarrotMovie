@@ -25,16 +25,16 @@ struct TitleDetailView: View {
             case .success:
                 ScrollView {
                     LazyVStack(alignment: .leading) {
-                        YoutubePlayer(videoId: viewModel.videoId)
-                            .aspectRatio(1.3, contentMode: .fit)
-    //                    AsyncImage(url: URL(string: title.posterPath ?? "")) { image in
-    //                        image
-    //                            .resizable()
-    //                            .scaledToFit()
-    //                    } placeholder: {
-    //                        ProgressView()
-    //                    }
-    //                    .frame(width: geometry.size.width, height: geometry.size.height * 0.85)
+//                        YoutubePlayer(videoId: viewModel.videoId)
+//                            .aspectRatio(1.3, contentMode: .fit)
+                        AsyncImage(url: URL(string: title.posterPath ?? "")) { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(width: geometry.size.width, height: geometry.size.height * 0.85)
                         
                         Text(titleName)
                             .bold()
