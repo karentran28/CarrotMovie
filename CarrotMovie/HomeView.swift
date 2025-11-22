@@ -58,14 +58,18 @@ struct HomeView: View {
                                 }
                             }
                             
-                            HorizontalListView(header: Constants.trendingMoviesString, titles: viewModel.trendingMovies)
-                            HorizontalListView(header: Constants.trendingTVString, titles: viewModel.trendingTV)
-                            HorizontalListView(header: Constants.topRatedMoviesString, titles: viewModel.topRatedMovies)
-                            HorizontalListView(header: Constants.topRatedTVString, titles: viewModel.topRatedTV)
-                        }
-                        // when a Title object gets added to path, show that title's detail view
-                        .navigationDestination(for: Title.self) { title in
-                            TitleDetailView(title: title)
+                            HorizontalListView(header: Constants.trendingMoviesString, titles: viewModel.trendingMovies) { title in
+                                titleDetailPath.append(title)
+                            }
+                            HorizontalListView(header: Constants.trendingTVString, titles: viewModel.trendingTV) { title in
+                                titleDetailPath.append(title)
+                            }
+                            HorizontalListView(header: Constants.topRatedMoviesString, titles: viewModel.topRatedMovies) { title in
+                                titleDetailPath.append(title)
+                            }
+                            HorizontalListView(header: Constants.topRatedTVString, titles: viewModel.topRatedTV) { title in
+                                titleDetailPath.append(title)
+                            }
                         }
                     case .failed(let underlyingError):
                         Text("Error: \(underlyingError.localizedDescription)")
@@ -73,6 +77,10 @@ struct HomeView: View {
                 }
                 .task {
                     await viewModel.getTitles()
+                }
+                // when a Title object gets added to path, show that title's detail view
+                .navigationDestination(for: Title.self) { title in
+                    TitleDetailView(title: title)
                 }
             }
         }

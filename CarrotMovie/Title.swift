@@ -9,7 +9,7 @@ import Foundation
 
 // array that holds objects of type Title
 // default value of an empty array
-struct APIObject: Decodable {
+struct TMDBAPIObject: Decodable {
     var results: [Title] = []
 }
 

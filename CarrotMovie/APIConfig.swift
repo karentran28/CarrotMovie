@@ -13,6 +13,9 @@ import Foundation
 struct APIConfig: Decodable {
     let tmdbBaseURL: String
     let tmdbAPIKey: String
+    let youtubeBaseURL: String
+    let youtubeAPIKey: String
+    let youtubeSearchURL: String
     
     //lazy singleton
     static let shared: APIConfig? = {
@@ -20,7 +23,7 @@ struct APIConfig: Decodable {
             return try loadConfig()
         } catch {
             print("Failed to load API config: \(error.localizedDescription)")
-            //if fails shared = nil
+            // if fails, shared = nil
             return nil
         }
     }()
