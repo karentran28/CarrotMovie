@@ -64,10 +64,10 @@ This project was built as part of a tutorial, with added structure and enhanceme
 - URL building with query items
 
 ---
+# 🎥 Demo Video
+https://github.com/karentran28/CarrotMovie/releases/download/v1.0.0/demo.mov
 
 # 📸 Screenshots
-
-> **📌 Replace these placeholders with your actual screenshots later.**
 
 | Home Screen | Upcoming |
 |-------------|---------------|
@@ -75,7 +75,7 @@ This project was built as part of a tutorial, with added structure and enhanceme
 
 | Search Screen | Downloads |
 |---------------|-----------|
-| ![SearchScreen](assets/MovieSearch.png)) | ![Downloads](assets/downloads.png) |
+| ![SearchScreen](assets/MovieSearch.png) | ![Downloads](assets/downloads.png) |
 
 ---
 
@@ -164,4 +164,4 @@ This project helped reinforce:
 
 # 🙌 Credits
 
-This project was built by following a tutorial created by [Carlos / Blossom Build].
+This project was built by following a tutorial created by [Blossom Build](https://www.youtube.com/watch?v=-VC3hIEL7eQ).
